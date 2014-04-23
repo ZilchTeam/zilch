@@ -1,3 +1,4 @@
+package PersProt;
 public class PersProt {
 	private float x, y;
 
@@ -7,10 +8,8 @@ public class PersProt {
 	public float getY() { return y; }
 	public void setY(float Y) { y = Y; }
 
-	
-	
-	public PersProt(float X, float Y) {
-		x = X;
-		y = Y;
+	public PersProt(float startX, float startY) {
+		x = startX;
+		y = startY;
 	}
 }
