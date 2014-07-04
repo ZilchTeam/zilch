@@ -9,6 +9,11 @@ public class NoLifeObj extends BaseClass {
     private String shape;// ?
     private Boolean pass;
 
+    @Override
+    public String getName() {
+        return null;
+    }
+
     public NoLifeObj(Point location, int size, Color color, String shape, Boolean pass) {
         super(location, size, color, shape, pass);
     }

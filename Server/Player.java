@@ -11,19 +11,26 @@ public class Player extends LivingObj {
     private Point location = new Point(0,0);
     private int size = 1;
     private Color color = Color.black;
-    private String shape = "lol";
+    private String name;
+    private String shape;
     private Boolean pass = true;
     private int speed = 1;
     private int id;
 
-    public int getX() { return location.x; }
-    public void setX(int X) { location.x = X; }
+    @Override
+    public String getName() {
+        return name;
+    }
 
-    public int getY() { return location.y; }
-    public void setY(int Y) { location.y = Y; }
-
-    public Player (Point location, int size, Color color, String shape, Boolean pass, int speed) {
+    public Player (Point location, int size, Color color, String shape, Boolean pass, int speed, String name) {
         super(location, size, color, shape, pass, speed);
+        this.location = location;
+        this.size = size;
+        this.color = color;
+        this.shape = shape;
+        this.pass = pass;
+        this.speed = speed;
+        this.name = name;
         id = playersCount;
         playersCount++;
     }

@@ -8,19 +8,22 @@ import java.util.ArrayList;
 public class ControlPanel extends Frame {
 
     ArrayList<Player> players;
-    Player player1;//для теста короче
-    Player player2;
+    ArrayList<LivingObj> livingObjs;
+    ArrayList<NoLifeObj> noLifeObjs;
 
     public ControlPanel() {
         setSize(200, 100);
         setVisible(true);
         setTitle("Control");
-        //тестовая часть
+
+        //todo всё на фабрику
         players = new ArrayList<Player>();
-        player1 = new Player(new Point(100,100),1,Color.black,"lol",true,1);
-        players.add(0,player1);
-        player2 = new Player(new Point(50,50), 2, Color.black, "triangle", true, 2);
-        players.add(1,player2);
+        livingObjs = new ArrayList<LivingObj>();
+        noLifeObjs = new ArrayList<NoLifeObj>();
+
+        //неживой объект для теста
+        NoLifeObj tree = new NoLifeObj(new Point(300,300),5, Color.blue, "tree", true );
+        noLifeObjs.add(tree);
 
         addWindowListener(new WindowAdapter() {
             @Override
