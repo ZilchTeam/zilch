@@ -12,7 +12,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class App {
-
     public static int id = 0;
 
     public ISend send;
@@ -31,7 +30,6 @@ public class App {
             Registry myRegistry = LocateRegistry.getRegistry(ip, 1099);
             // search for myMessage service
             send = (ISend) myRegistry.lookup("myMessage");
-            //send.addPlayer();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -145,7 +143,7 @@ public class App {
         log = !log;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new App();
     }
 }

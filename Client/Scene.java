@@ -1,7 +1,7 @@
 package Client;
 
 import ISend.ISend;
-import Server.BaseClass;
+import Server.GameObject;
 import Server.Player;
 import engine.GameCanvas;
 import engine.Input;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 class Scene extends GameCanvas {
     private Image   banan = new ImageIcon("ban.png").getImage(),
                     img = new ImageIcon("arrow.png").getImage();
-    private ArrayList<BaseClass> visibleObj;
+    private ArrayList<GameObject> visibleObj;
     private AffineTransform at;
     private double Angle;
     private BufferedImage original_img,
@@ -59,7 +59,7 @@ class Scene extends GameCanvas {
 
         //отрисовать все объекты(пока только игроки)
         for (int i = 0; i < visibleObj.size(); i++) {
-            BaseClass obj = visibleObj.get(i);
+            GameObject obj = visibleObj.get(i);
 
             //определяем угол на который нужно повернуть изображение в радианах
             Angle = Math.PI-Math.atan2((obj.getX()-Input.getMousePosition().x),(obj.getY()-Input.getMousePosition().y));
