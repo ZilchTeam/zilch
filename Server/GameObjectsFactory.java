@@ -13,17 +13,47 @@ public class GameObjectsFactory extends AbstractFactory {
     @Override
     public GameObject getGameObj(String objName) {
         if (objName != null ) {
-            return new Player(new Point(random.nextInt(500), random.nextInt(500)), 1, Color.red, "quad", true, 1, objName);
+            Player newPlayer = new Player(
+                                new Point(random.nextInt(500), random.nextInt(500)),
+                                //new Dimension(random.nextInt(20) + 20, random.nextInt(20) + 20),
+                                30,
+                                Color.red,
+                                "quad",
+                                true,
+                                1,
+                                objName);
+
+            //подписываем игроков друг на друга
+            for(int i = 0; i < players.size(); i++) {
+                Player player = players.get(i);
+                player.addObserver(newPlayer);
+                newPlayer.addObserver(player);
+            }
+            return newPlayer;
         }
         return null;
     }
 
     public GameObject getGameObj(String objName, boolean live) {
         if (live) {
-            return new LivingObject(new Point(random.nextInt(500), random.nextInt(500)), 1, Color.CYAN, "Quad", true, objName, 5 );
+            return new LivingObject(
+                    new Point(random.nextInt(500), random.nextInt(500)),
+                    //new Dimension(random.nextInt(20),random.nextInt(20)),
+                    30,
+                    Color.CYAN,
+                    "Quad",
+                    true,
+                    objName,
+                    5 );
         }
         else {
-            return new NoLiveObject(new Point(random.nextInt(500), random.nextInt(500)), 1, Color.CYAN, "Quad", true );
+            return new NoLiveObject(
+                    new Point(random.nextInt(500), random.nextInt(500)),
+                    //new Dimension(random.nextInt(20),random.nextInt(20)),
+                    30,
+                    Color.CYAN,
+                    "Quad",
+                    true );
         }
     }
 }

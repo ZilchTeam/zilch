@@ -1,10 +1,11 @@
 package Server;
 
-import java.awt.Color;
-import java.awt.Point;
+import java.awt.*;
 import java.io.Serializable;
+import java.util.Observable;
+import java.util.Observer;
 
-public abstract class GameObject implements Serializable {
+public abstract class GameObject extends Observable implements Serializable, Observer {
 	private Point location;
 	private int size; // ?
 	private Color color;
@@ -17,6 +18,13 @@ public abstract class GameObject implements Serializable {
     }
     public void setLocation(Point location) {
         this.location = location;
+    }
+
+    public int getSize() {
+        return size;
+    }
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public int getX() {

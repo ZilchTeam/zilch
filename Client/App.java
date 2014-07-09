@@ -13,6 +13,10 @@ import java.rmi.registry.Registry;
 
 public class App {
     public static int id = 0;
+    public static int GAME_STATE = 0;
+    public static int MENU = 1;
+    public static int GAME = 2;
+    public static int SOMESTATE = 3;
 
     public ISend send;
     private Input input = new Input();
@@ -21,7 +25,6 @@ public class App {
     private String ip;
 
     public App() {
-
         Connect();//вспомогательное окно получающее ip для подключиния
 
         //серверная часть
@@ -36,10 +39,11 @@ public class App {
         }
 
         Login();//вспомогательное окно регистрирующее или логирующее пользователя
-
+        GAME_STATE = GAME;
         GameFrame app = GameFrame.getInstance();	// Форма делается так а не через конструктор.
         app.setSize(600, 600);
         app.setTitle("Client");
+        app.setLocationRelativeTo(null);
         Scene scene = new Scene(send);          // Своя сцена.
         app.begin(scene);					// Скармливаем сцену.
         scene.addKeyListener(input);		//подпись на события мыши и клавы
@@ -51,6 +55,8 @@ public class App {
         final Frame loginFrame = new Frame();
         loginFrame.setLayout(null);
         loginFrame.setSize(250, 220);
+        loginFrame.setLocationRelativeTo(null);
+        //loginFrame.setLocation(System.);
         loginFrame.setTitle("Введите ваш ID для логина или Ник для регистрации");
         loginFrame.setVisible(true);
 
@@ -96,7 +102,8 @@ public class App {
         loginFrame.add(textFieldLogin);
         loginFrame.add(textFieldRegister);
 
-        while(!log){ //кост ыль
+
+        while(!log){ //костыль
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -111,6 +118,7 @@ public class App {
         connectFrame.setLayout(null);
         connectFrame.setSize(200, 180);
         connectFrame.setTitle("Введите IP сервера");
+        connectFrame.setLocationRelativeTo(null);
         connectFrame.setVisible(true);
 
         textFieldConnect = new TextField("127.0.0.1");

@@ -1,6 +1,7 @@
 package Server;
 
 import java.awt.*;
+import java.util.Observable;
 
 public class LivingObject extends GameObject {
 
@@ -12,5 +13,10 @@ public class LivingObject extends GameObject {
     }
 
     public void Move() {
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }
